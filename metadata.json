@@ -1,0 +1,6 @@
+{
+  "name": "English Mastery Quiz",
+  "description": "Интерактивная викторина для изучения английского языка с геймификацией.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
