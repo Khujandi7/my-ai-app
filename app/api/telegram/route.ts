@@ -155,7 +155,12 @@ async function handleCallback(
 
 export async function POST(req: NextRequest) {
   const secret = process.env.TELEGRAM_WEBHOOK_SECRET;
-  if (!secret || req.headers.get('x-telegram-bot-api-secret-token') !== secret) {
+  const got = req.headers.get('x-telegram-bot-api-secret-token');
+  if (!secret || got !== secret) {
+    console.error(
+      'telegram webhook rejected (401):',
+      !secret ? 'TELEGRAM_WEBHOOK_SECRET is not set' : got ? 'secret header does not match' : 'secret header missing',
+    );
     return NextResponse.json({ ok: false }, { status: 401 });
   }
 
